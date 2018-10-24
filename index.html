@@ -41,8 +41,8 @@ html, body {
     margin-bottom: auto;
     transform: translate(-50%, -50%); 
     top: 50%;
-    left: calc(50% - 190px);
-    max-width: calc(100% - 380px);
+    left: calc(50% - 205px);
+    max-width: calc(100% - 410px);
     width: auto;
     height: auto;
     max-height: 100%;
@@ -61,27 +61,11 @@ html, body {
       /*width: */
       /*height: 100%;*/
       /*min-height: 780px;*/
-      height:1115px;
+      width:439px;
       /*min-height: 600px;*/
       /*max-height: 765px;*/
       z-index:19;
       /*clip: rect(auto, auto, auto, 0);*/
-    }
-
-    #moreLiveBackground
-    {
-      display: block;
-      position: absolute;
-      top:0;
-      /*margin-top: 0px;*/
-      /*margin-top: 0vh;*/
-      left: 0px;
-      /*height: 100vh;*/
-      height: 142px;
-      width: 100%;
-      /*min-height: 600px;*/
-      /*max-height: 765px;*/
-      z-index:18;
     }
 
     #blankDiv
@@ -233,14 +217,14 @@ function moveRight() {
   var id = setInterval(frame, 10);
   var idW = setInterval(frame, 10);
   function frame() {
-    if (pos <= -380) {
+    if (pos <= -410) {
       clearInterval(id);
     } else {
       pos-= 5; 
       moreLive.style.right = pos + 'px'; 
     }
 
-    if (screenWidthAdded >= 380) {
+    if (screenWidthAdded >= 410) {
       clearInterval(idW);      
       mainScreen.style.maxWidth = '100%';    
       mainScreen.style.left = '50%';
@@ -248,8 +232,8 @@ function moveRight() {
 
     } else {
       screenWidthAdded+= 5;
-      mainScreen.style.maxWidth = window.innerWidth - 396 + screenWidthAdded +'px';
-      mainScreen.style.left = window.innerWidth/2 - 190 - 8 + screenWidthAdded/2 + 'px';
+      mainScreen.style.maxWidth = window.innerWidth - 426 + screenWidthAdded +'px';
+      mainScreen.style.left = window.innerWidth/2 - 205 - 8 + screenWidthAdded/2 + 'px';
       whiteBottomBackground.style.width = window.innerWidth - 16 + screenWidthAdded + 'px';
    }
  }
@@ -267,7 +251,7 @@ function moveLeft() {
   var mainScreen = document.getElementById("mainScreen");
   var moreLive = document.getElementById("moreLive");
   var whiteBottomBackground = document.getElementById("whiteBottomBackground");
-  var pos = -380;
+  var pos = -410;
   var screenWidthAdded = 0;
   var id = setInterval(frame, 10);
   var idW = setInterval(frame, 10);
@@ -278,7 +262,7 @@ function moveLeft() {
       pos+= 5; 
       moreLive.style.right = pos + 'px'; 
     }
-    if (screenWidthAdded>= 380) {
+    if (screenWidthAdded>= 410) {
       clearInterval(idW);
       mainScreen.style.maxWidth = 'calc(100% - 380px)';
       mainScreen.style.left = 'calc(50% - 190px)';
