@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Live Demo 1</title>
+<style>  
+
+html, body {
+    height: 100%;
+}
+
+
+   #mainscreen
+   {
+   	position: absolute;
+   	top:101px;
+   	left:0;
+   	margin-left: auto;
+   	right:0;
+   	margin-right: auto;
+   	width: 1280px;
+    }
+
+   #bottomThumbs
+   {
+   	position: absolute;
+   	top:1076px;
+   	left:0;
+   	margin-left: auto;
+   	right:0;
+   	margin-right: auto;
+   	width: 1297px;
+   }
+
+   #headerLeft
+   {
+   	position: absolute;
+   	display: block;
+   	top: 16px;
+   	left: 85px;
+   	height: 40px;
+   /*	width: 537px;*/
+   }
+
+   #headerRight
+   {
+	position: absolute;
+   	display: block;
+   	top: 24px;
+   	/*right: 74.5px;*/
+   	right: 85px;
+   	width: 122px;
+   }
+
+   #headerBackground
+   {
+   	position: absolute;
+   	display: block;
+   	top:0;
+   	left:0;
+   	right:0;
+   	width: 100%;
+   	height: 76px;
+   }
+
+   #blankBackground{
+   	position: absolute;
+   	display: block;
+   	top:0;
+   	width: 100%;
+   	height: 3035px;
+   }
+
+
+</style>
+</head>
+<body>
+<div id = "blankBackground"></div>
+<img src="1-1VODmainScreen.png" id="mainscreen" onclick="location.href='index.html'"/>
+<img src="1-1VODbottomThumbs.png" id="bottomThumbs"/>
+<img src="1-1headerBackground.png" id="headerBackground"/>
+<img src="leftHeaderRegular.png" id="headerLeft"/>
+<img src="rightHeaderRegular.png" id="headerRight"/>
+
+
+
+
+<script type="text/javascript">
+
+window.onscroll = function(){scroll()};
+
+var leftHeader = document.getElementById("headerLeft"); 
+var rightHeader = document.getElementById("headerRight");   
+
+// console.log("clac:" + (window.innerWidth - 1280)/2);
+
+function scroll(){
+
+	console.log(window.pageYOffset);
+	console.log(document.documentElement.scrollTop );
+	console.log(window.scrollY);
+
+	var scrollY = window.pageYOffset || document.documentElement.scrollTop || window.scrollY;
+
+	if (scrollY > 230){	
+
+	console.log("scrolled");
+
+	leftHeader.src = "leftHeaderChanged.png";
+	rightHeader.src = "rightHeaderChanged.png";
+	leftHeader.style.position = "fixed";
+	rightHeader.style.position = "fixed";
+	rightHeader.style.width = "336px";
+	rightHeader.style.top = "10px";
+	headerBackground.style.position = "fixed";
+	
+	}
+ 	else{
+ 	leftHeader.src = "leftHeaderRegular.png";
+ 	rightHeader.src = "rightHeaderRegular.png";
+ 	leftHeader.style.position = "absolute";
+ 	rightHeader.style.position = "absolute";
+	rightHeader.style.width = "122px";
+	rightHeader.style.top = "24px";
+ 	headerBackground.style.position = "absolute";
+ 	}
+}
+
+</script>
+</body>
+</html>
+

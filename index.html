@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Live Demo 1</title>
+<style>  
+
+html, body {
+    height: 100%;
+}
+
+   #blackBackground
+   {
+    background-color: black;
+    position:absolute;  
+    height:100vh; 
+    /*min-height: 600px;*/
+    width: 100%;
+    left:0px;
+    top:0px;
+    z-index:-3;
+   }
+
+/*   #background
+   {
+    position:absolute;
+    height:100vh;
+    min-height: 600px;
+    left:0px;
+    top:0px;
+    z-index:-1;
+   }*/
+
+
+   #mainScreen
+	 {
+	  display: block;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+	  margin-top : auto;
+    margin-bottom: auto;
+    transform: translate(-50%, -50%); 
+    top: 50%;
+    left: calc(50% - 190px);
+    max-width: calc(100% - 380px);
+    width: auto;
+    height: auto;
+    max-height: 100%;
+	  z-index:18;
+	 }
+
+    #moreLive
+    {
+      display: block;
+      position: absolute;
+      top:0;
+      /*margin-top: 0vh;*/
+      right: 0px;
+      /*height: 100vh;*/
+      /*min-width: 462px;*/
+      /*width: */
+      /*height: 100%;*/
+      /*min-height: 780px;*/
+      height:1115px;
+      /*min-height: 600px;*/
+      /*max-height: 765px;*/
+      z-index:19;
+      /*clip: rect(auto, auto, auto, 0);*/
+    }
+
+    #moreLiveBackground
+    {
+      display: block;
+      position: absolute;
+      top:0;
+      /*margin-top: 0px;*/
+      /*margin-top: 0vh;*/
+      left: 0px;
+      /*height: 100vh;*/
+      height: 142px;
+      width: 100%;
+      /*min-height: 600px;*/
+      /*max-height: 765px;*/
+      z-index:18;
+    }
+
+    #blankDiv
+    {
+      position: relative;
+      display:block;
+      /*vertical-align:top;*/
+      /*margin-top: -8px;*/
+      left: 0;
+      right: 0;
+      top:0;
+      margin-top:0;
+      margin-left: 0;
+      margin-right: 0;
+      /*width: 100%;*/
+      height: calc(100% - 8px);
+      /*min-height: 600px;*/
+      /*max-height: 765px;*/
+      /*background-color: red;*/
+      z-index:10;
+    }  
+
+    #container{
+      position: relative;
+    }
+
+    #ad{
+      display:block;
+      /*vertical-align:middle;*/
+      margin-left:auto;
+      margin-right: auto;
+      left:0;
+      right:0;
+      position:absolute;
+      /*position: relative;*/
+      margin-top:30px;
+      /*height:10vh;*/
+      height: 90px;
+      /*max-height: 900px;*/
+      z-index:20;
+    }
+
+    #bottomThumbs{
+      display:block;
+      margin-left:auto;
+      margin-right: auto;
+      left:0;
+      right:0;
+      position:absolute;
+      margin-top:155px;
+      height: 2187px;
+      z-index:20;
+      overflow: hidden;
+    }
+
+    #whiteBottom{
+      display: block;
+      margin-left:auto;
+      margin-right: auto;
+      left:0;
+      right:0;
+      position:absolute;
+      top:0px;
+      height:445vh;
+      min-height: 2650px;
+      /*max-width: 1440px;*/
+      /*max-height: 3374px;*/
+      /*max-width: 1390px;*/
+      z-index:2;
+    }
+
+    #whiteBottomBackground{
+      margin-top:0px;
+      left:0px;
+      right:0px;
+      margin-left: 0px;
+      margin-right: 0px;
+      position:absolute;
+      display: block;
+      height:2609px;
+      width: 100%;
+      /*min-height: 2650px;*/
+      /*max-width: 1440px;*/
+      /*max-height: 3374px;*/
+
+      z-index:19;
+    }
+
+    #black{
+      background-color: black;
+      position: absolute;
+      top:0;
+      left:0;
+       /*margin-right: clac(-50% - 462px);*/
+       /*background-color: red;*/
+       z-index: 10;
+       height: 100%;
+       width: 100%
+    }
+
+
+</style>
+</head>
+<body>
+
+<!-- <div id= "container"> -->
+<div id="blackBackground"></div>
+<!-- <img src="blueBackground.png" id="background"/> -->
+<div id="black">
+</div>
+<img src="2-1mainScreen.png" id="mainScreen" />
+
+
+
+<!-- <img src="whiteBottom.png" id="whiteBottom" /> -->
+
+<!-- <div id="blankHideButton" onclick="hideOrShow()"></div> -->
+<!-- <img src="blank.png" id="blankDiv" /> -->
+<div id="blankDiv"></div>
+<img src="2-3moreLive.png" onclick="hideOrShow()" id="moreLive" />
+<img src="1-2ad.png" id="ad" />
+<img src="1-1bottomThumbnail.png" id="bottomThumbs" onclick="location.href='VOD.html'"/>
+<img src="1-2whiteBackground.png" id="whiteBottomBackground" />
+
+<!-- </div> -->
+
+
+<script>
+
+var hided = false;
+
+
+function hideOrShow(){
+console.log("hideOrShowClicked");
+if (hided == true) {
+moveLeft();
+}else{
+  moveRight();
+}
+}
+
+function moveRight() {
+
+  var mainScreen = document.getElementById("mainScreen");
+  var moreLive = document.getElementById("moreLive");
+  var whiteBottomBackground = document.getElementById("whiteBottomBackground");
+  var pos = 0;
+  var screenWidthAdded = 0;
+  var id = setInterval(frame, 10);
+  var idW = setInterval(frame, 10);
+  function frame() {
+    if (pos <= -380) {
+      clearInterval(id);
+    } else {
+      pos-= 5; 
+      moreLive.style.right = pos + 'px'; 
+    }
+
+    if (screenWidthAdded >= 380) {
+      clearInterval(idW);      
+      mainScreen.style.maxWidth = '100%';    
+      mainScreen.style.left = '50%';
+      whiteBottomBackground.style.width = 'calc(100% + 380)';
+
+    } else {
+      screenWidthAdded+= 5;
+      mainScreen.style.maxWidth = window.innerWidth - 396 + screenWidthAdded +'px';
+      mainScreen.style.left = window.innerWidth/2 - 190 - 8 + screenWidthAdded/2 + 'px';
+      whiteBottomBackground.style.width = window.innerWidth - 16 + screenWidthAdded + 'px';
+   }
+ }
+
+ // moreLive.style.clip="rect(auto, 0, auto, auto)";
+   moreLive.src = "2-3moreLiveChanged.png";
+   hided = true;
+   console.log("hide");
+
+
+}
+
+function moveLeft() {
+
+  var mainScreen = document.getElementById("mainScreen");
+  var moreLive = document.getElementById("moreLive");
+  var whiteBottomBackground = document.getElementById("whiteBottomBackground");
+  var pos = -380;
+  var screenWidthAdded = 0;
+  var id = setInterval(frame, 10);
+  var idW = setInterval(frame, 10);
+  function frame() {
+    if (pos >= 0) {
+      clearInterval(id);
+    } else {
+      pos+= 5; 
+      moreLive.style.right = pos + 'px'; 
+    }
+    if (screenWidthAdded>= 380) {
+      clearInterval(idW);
+      mainScreen.style.maxWidth = 'calc(100% - 380px)';
+      mainScreen.style.left = 'calc(50% - 190px)';
+      whiteBottomBackground.style.width = '100%';
+
+    } else {
+      screenWidthAdded+= 5;
+      mainScreen.style.maxWidth = window.innerWidth - 16 - screenWidthAdded +'px';
+      mainScreen.style.left = window.innerWidth/2 - 8 - screenWidthAdded/2 + 'px';
+      whiteBottomBackground.style.width = window.innerWidth - 16 - screenWidthAdded + 'px';
+    }
+  }
+
+
+
+  moreLive.src = "2-3moreLive.png";
+  hided = false; 
+  console.log("show");
+}
+
+</script>
+</body>
+</html>
+
